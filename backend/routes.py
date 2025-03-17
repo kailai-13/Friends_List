@@ -20,7 +20,7 @@ def add_friends():
         required_fields = ['name', 'role', 'description', 'gender']
         
         # Check for missing fields
-        
+
         for field in required_fields:
             if field not in data or not isinstance(data[field], str) or not data[field].strip():
                 return jsonify({'error': f'{field} field is missing or empty'}), 400
@@ -48,3 +48,16 @@ def add_friends():
     except Exception as e:
         db.session.rollback()
         return jsonify({'error':str(e)}),500
+    
+@app.route('/delete_friends/<int:id>',methods=["DELETE"])
+def delete(id):
+    try:
+        fri=Friends.query.get(id)
+        if not fri:
+            return jsonify({'error':'No Such Friend'}),404
+        db.session.delete(fri)
+        db.session.commit()
+        return jsonify({'message':'deleted successfully'}),200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error':str(e)})
