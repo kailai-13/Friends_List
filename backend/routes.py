@@ -61,3 +61,20 @@ def delete(id):
     except Exception as e:
         db.session.rollback()
         return jsonify({'error':str(e)})
+    
+@app.route('/update_friends/<int:id>',methods=["PUT"])
+def update(id):
+    try:
+        fri=Friends.query.get(id)
+        if not fri:
+            return jsonify({'error':'No Such Friend'}),404
+        data=request.json
+        fri.name=data.get("name",fri.name)
+        fri.role=data.get("role",fri.role)
+        fri.description=data.get("description",fri.description)
+        fri.gender=data.get("gender",fri.gender)
+        db.session.commit()
+        return jsonify({'message':'updated successfully'}),200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error':str(e)}),500
