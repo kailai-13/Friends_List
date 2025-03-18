@@ -70,7 +70,7 @@ def update(id):
             return jsonify({'error':'No Such Friend'}),404
         data=request.json
         fri.name=data.get("name",fri.name)
-        fri.role=data.get("role",fri.role)
+        fri.role=data.get("role",fri.role) 
         fri.description=data.get("description",fri.description)
         fri.gender=data.get("gender",fri.gender)
         db.session.commit()
