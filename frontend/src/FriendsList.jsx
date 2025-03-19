@@ -27,7 +27,7 @@ const FriendsList  =()=>{
         }
         catch(error){
             console.log("Error in getting friends",error)
-            setFriends([]); // ✅ Set an empty array in case of error
+            setFriends([]); 
         }
 
     }
@@ -74,6 +74,6 @@ return (
 
     </>
 );
-                                    };
+};
 
 export default FriendsList;
