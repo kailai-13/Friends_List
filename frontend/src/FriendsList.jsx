@@ -1,5 +1,5 @@
 import {React , useEffect , useState} from 'react';
-import {getFriends} from './api';
+import {deleteFriend, getFriends} from './api';
 import {
     Table,
     TableBody,
@@ -31,7 +31,23 @@ const FriendsList  =()=>{
         }
 
     }
+const handleDelete = async (id)=>{
+    const confrimDelete = window.confirm("Are you sure you want to delete this friend?");
+    if (!confrimDelete){
+        return;}
+    const s = await deleteFriend(id);
+    if (s)
+    {
+        alert("Friend Deleted")
+        fetchFriends();
+    }
+    
+    else{
+        alert("Error in deleting friend")
+    }
+        
 
+};
 
 
 
@@ -66,6 +82,10 @@ return (
                                         "No Image"
                                     )}
                                 </TableCell>
+                                <TableCell>
+                                    <button  variant="contained"
+                                        color="secondary" onClick={() => handleDelete(friend.id)}>Delete</button>
+                                </TableCell>
                             </TableRow>
                         ))}
                 </TableBody>
@@ -75,5 +95,6 @@ return (
     </>
 );
 };
+
 
 export default FriendsList;

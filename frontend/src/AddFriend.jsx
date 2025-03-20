@@ -10,6 +10,7 @@ import {
     MenuItem
 } from '@mui/material';
 import { addFriend } from "./api";
+import {fetchFriends} from './FriendsList';
 
 const AddFriendForm = ({onAddFriend}) => {
     const [friendData, setFriendData]=useState({
@@ -23,6 +24,7 @@ const AddFriendForm = ({onAddFriend}) => {
         setFriendData({...friendData , [e.target.name]: e.target.value});
     };
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!friendData.name || !friendData.role || !friendData.description || !friendData.gender) {
@@ -34,8 +36,9 @@ const AddFriendForm = ({onAddFriend}) => {
             const response = await addFriend(friendData);  // ✅ Await API response
             if (response) {
                 alert("Friend added successfully");
-                onAddFriend();  // ✅ Refresh the list
-                setFriendData({ name: '', role: '', description: '', gender: '' });  // ✅ Reset form
+                 // ✅ Refresh the list
+                setFriendData({ name: '', role: '', description: '', gender: '' });
+                fetchFriends();  // ✅ Reset form
             } else {
                 alert("Failed to add friend");
             }
