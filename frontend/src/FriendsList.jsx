@@ -75,6 +75,7 @@ const FriendsList = () => {
 
   return (
     <>
+    
       <Typography variant="h4" align="center" gutterBottom>
         FRIENDS OF ME
       </Typography>
@@ -114,14 +115,14 @@ const FriendsList = () => {
         </Table>
       </TableContainer>
 
-      {/* Edit Friend Dialog */}
+    
       <Dialog open={openEdit} onClose={() => setOpenEdit(false)}>
         <DialogTitle>Edit Friend</DialogTitle>
         <DialogContent>
-          <TextField label="Name" name="name" value={selectedFriend?.name || ""} onChange={handleEditChange} fullWidth />
-          <TextField label="Role" name="role" value={selectedFriend?.role || ""} onChange={handleEditChange} fullWidth />
-          <TextField label="Description" name="description" value={selectedFriend?.description || ""} onChange={handleEditChange} fullWidth />
-          <TextField label="Gender" name="gender" value={selectedFriend?.gender || ""} onChange={handleEditChange} fullWidth />
+          <TextField sx={{mt:4}} label="Name" name="name" value={selectedFriend?.name || ""} onChange={handleEditChange} fullWidth />
+          <TextField sx={{mt:4}} label="Role" name="role" value={selectedFriend?.role || ""} onChange={handleEditChange} fullWidth />
+          <TextField sx={{mt:4}} label="Description" name="description" value={selectedFriend?.description || ""} onChange={handleEditChange} fullWidth />
+          <TextField sx={{mt:4}} label="Gender" name="gender" value={selectedFriend?.gender || ""} onChange={handleEditChange} fullWidth />
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setOpenEdit(false)}>Cancel</Button>

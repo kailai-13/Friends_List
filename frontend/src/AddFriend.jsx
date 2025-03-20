@@ -51,7 +51,7 @@ const AddFriendForm = ({onAddFriend}) => {
 
     return (
         <Paper>
-            <Typography>
+            <Typography variant="h3" align="center">
                 Add Friend
             </Typography>
             <form onSubmit={handleSubmit}>
@@ -88,7 +88,7 @@ const AddFriendForm = ({onAddFriend}) => {
                     <MenuItem value="female">Female</MenuItem>
                 </TextField>
                 <Box>
-                    <Button type="submit" variant="contained" color="primary">Add Friend</Button>
+                    <Button type="submit" variant="contained" color="primary" >Add Friend</Button>
                 </Box>
             </form>
         </Paper>
