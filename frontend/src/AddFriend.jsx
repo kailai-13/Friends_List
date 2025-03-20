@@ -38,7 +38,7 @@ const AddFriendForm = ({onAddFriend}) => {
                 alert("Friend added successfully");
                  // ✅ Refresh the list
                 setFriendData({ name: '', role: '', description: '', gender: '' });
-                fetchFriends();  // ✅ Reset form
+                onAddFriend();  // ✅ Reset form
             } else {
                 alert("Failed to add friend");
             }
