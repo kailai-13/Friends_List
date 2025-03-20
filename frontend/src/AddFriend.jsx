@@ -10,7 +10,7 @@ import {
     MenuItem
 } from '@mui/material';
 import { addFriend } from "./api";
-import {fetchFriends} from './FriendsList';
+
 
 const AddFriendForm = ({onAddFriend}) => {
     const [friendData, setFriendData]=useState({
